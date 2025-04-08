@@ -1,0 +1,77 @@
+package com.example.parcial.Model;
+
+import com.example.parcial.Model.ReservaParqueadero;
+import com.example.parcial.Model.ReservaZona;
+import com.example.parcial.Model.Visitante;
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
+
+@Entity
+public class ReservaParqueadero {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idReserva;
+
+    private LocalDate fecha;
+    private LocalTime horaInicio;
+
+    @ManyToOne
+    @JoinColumn(name = "idPropietario")
+    private Propietario propietario;
+
+    public ReservaParqueadero() {
+    }
+
+    public ReservaParqueadero(int idReserva, LocalDate fecha, LocalTime horaInicio, Propietario propietario) {
+        this.idReserva = idReserva;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.propietario = propietario;
+    }
+
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public LocalTime getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(LocalTime horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+
+    @Override
+    public String toString() {
+        return "ReservaParqueadero{" +
+                "idReserva=" + idReserva +
+                ", fecha=" + fecha +
+                ", horaInicio=" + horaInicio +
+                ", propietario=" + propietario +
+                '}';
+    }
+}
